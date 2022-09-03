@@ -1,0 +1,100 @@
+1. Download 8.1 x64 non thread safe
+https://windows.php.net/download#php-8.1
+
+2. Extract folder and put somewhere safe
+
+3. Open start menu search for "environment variables" open it
+
+4. Bottom right click "Environment Variables"
+
+5. Select path variable on top half under user variables
+
+6. Press edit
+
+7. Click new on the right
+
+8. Paste in folder location, for example mine is on my Desktop and would be C:\Users\murra\Desktop\php-8.1.10-nts-Win32-vs16-x64
+
+9. Press OK then OK then OK
+
+10. Restart computer
+
+11. Open command type php --version
+	Should say PHP 8.1.10 (cli) ...
+
+12. In VSCode extensions (left side looks like building blocks) seach for "PHP Server" should be by brapifra, download it
+
+13. Gear -> Extension settings
+
+14. Put in PHP path, this should be similar to environment variable but ends in php.exe for example
+	C:\Users\murra\Desktop\php-8.1.10-nts-Win32-vs16-x64\php.exe
+
+
+---------------------------------
+
+
+Installing MySql in VSCode
+
+1. Go to extensions and search for "SQLTools" by Matheus Teixeira, download it
+
+2. If you used a default setting install in workbench you will have a permission issue and need to follow the below:
+
+In WorkBench run this (replace password with your password)
+
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
+
+Then run this:
+
+flush privileges;
+
+Restart workbench
+
+
+---------------------------------
+
+Making php and mysqli work together
+
+
+1. In php folder copy and paste php.ini-production file so you have a duplicate
+
+2. Rename to php.ini
+
+3. Edit the php.ini file
+
+4.Find on line 930
+;extension=mysqli
+
+Remove ; to uncomment it, should be around the following:
+;extension=exif      ; Must be after mbstring as it depends on it
+;extension=mysqli
+;extension=oci8_12c  ; Use with Oracle Database 12c Instant Client
+
+5. Then change it to extension=php_mysqli.dll
+
+6. Go to line 765
+extension_dir = "ext"
+
+7. Change to whatever your php folder \ext is, for example:
+
+extension_dir = "C:\Users\murra\Desktop\php-8.1.10-nts-Win32-vs16-x64\ext"
+
+8. Save and then you're fully setup!
+
+
+---------------------------------
+
+Final steps:
+
+1. Top left of vscode left toolbar explorer
+
+2. Open folder to wherever your .php files are
+
+3. Click on .php file
+
+4. Right click in workspace and press PHP Server: Serve Project
+
+(Included text file)
+
+When running a new php file or changing files, you must open the folder in the explorer, or else it will not properly work if you just open the .php file instead of opening it in folder and running it through explorer
+
+Dalton Murray

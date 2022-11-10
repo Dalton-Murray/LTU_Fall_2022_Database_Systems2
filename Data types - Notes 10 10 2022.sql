@@ -1,0 +1,2 @@
+-- MYSQL Data types
+-- Character, numeric, date and time, large object (LOB), spatial (location), json file

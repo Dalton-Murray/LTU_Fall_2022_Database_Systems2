@@ -1,10 +1,10 @@
 -- USE ap;
 
--- SELECT *
--- FROM ap.invoices
--- WHERE invoice_total > 100
--- ORDER BY invoice_total DESC
--- -- LIMIT 1, 3;
+SELECT *
+FROM ap.invoices
+WHERE invoice_total > 100
+ORDER BY invoice_total DESC
+LIMIT 1, 3;
 
 -- SELECT *
 -- FROM ap.invoices
